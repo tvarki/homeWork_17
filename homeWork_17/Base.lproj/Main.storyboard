@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="homeWork_17" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-3b-QXh">
+                                <rect key="frame" x="0.0" y="177" width="414" height="30"/>
+                                <state key="normal" title="Print 123"/>
+                                <connections>
+                                    <action selector="print123:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wke-DY-Oxi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YB7-5u-Upb">
+                                <rect key="frame" x="0.0" y="222" width="414" height="30"/>
+                                <state key="normal" title="Print 231"/>
+                                <connections>
+                                    <action selector="print231:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sYR-1X-N9M"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B76-ff-EvK">
+                                <rect key="frame" x="0.0" y="267" width="414" height="30"/>
+                                <state key="normal" title="Print 312"/>
+                                <connections>
+                                    <action selector="print312:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BJk-Ro-Rqo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zqg-fC-t8x">
+                                <rect key="frame" x="0.0" y="312" width="414" height="30"/>
+                                <state key="normal" title="Renew"/>
+                                <connections>
+                                    <action selector="reload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XBH-F1-3Lh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Zqg-fC-t8x" firstAttribute="top" secondItem="B76-ff-EvK" secondAttribute="bottom" constant="15" id="EZF-L0-TFi"/>
+                            <constraint firstItem="B76-ff-EvK" firstAttribute="top" secondItem="YB7-5u-Upb" secondAttribute="bottom" constant="15" id="Ex3-4p-Eum"/>
+                            <constraint firstItem="YB7-5u-Upb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HZd-Pa-H3O"/>
+                            <constraint firstItem="B76-ff-EvK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ke4-ek-tqq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eGR-3b-QXh" secondAttribute="trailing" id="KtG-to-Sej"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YB7-5u-Upb" secondAttribute="trailing" id="M3p-zu-BlJ"/>
+                            <constraint firstItem="eGR-3b-QXh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="133" id="MiR-xd-ZTu"/>
+                            <constraint firstItem="B76-ff-EvK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QPW-OK-Lbm"/>
+                            <constraint firstItem="eGR-3b-QXh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UdI-c4-opo"/>
+                            <constraint firstItem="YB7-5u-Upb" firstAttribute="top" secondItem="eGR-3b-QXh" secondAttribute="bottom" constant="15" id="m6e-hX-7Nf"/>
+                            <constraint firstItem="Zqg-fC-t8x" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="mKg-d9-vBb"/>
+                            <constraint firstItem="Zqg-fC-t8x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="psQ-O2-f5V"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="print123Button" destination="eGR-3b-QXh" id="atu-oi-xyE"/>
+                        <outlet property="print231Button" destination="YB7-5u-Upb" id="c6e-n0-a3e"/>
+                        <outlet property="print312Button" destination="B76-ff-EvK" id="C5X-eC-r3N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="94"/>
+        </scene>
+    </scenes>
+</document>
