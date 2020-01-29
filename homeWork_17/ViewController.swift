@@ -108,8 +108,6 @@ class MainClass{
     private var ccc:MyThread?
     
     private let condition = NSCondition()
-    private var check1: Bool = false
-    private var check2: Bool = false
     
     private var state : State = .Default
     
