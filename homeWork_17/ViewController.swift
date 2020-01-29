@@ -122,17 +122,25 @@ class MainClass{
         print("---------------------------")
         DispatchQueue.global().async {
             self.b?.run()
-            self.a?.run()
-            self.c?.run()
-
         }
+        DispatchQueue.global().async {
+            self.a?.run()
+        }
+        DispatchQueue.global().async {
+            self.c?.run()
+        }
+
     }
     
     func print231(){
         print("---------------------------")
         DispatchQueue.global().async {
             self.bb?.run()
+        }
+        DispatchQueue.global().async {
             self.aa?.run()
+        }
+        DispatchQueue.global().async {
             self.cc?.run()
         }
     }
@@ -141,7 +149,11 @@ class MainClass{
         print("---------------------------")
         DispatchQueue.global().async {
             self.bbb?.run()
+        }
+        DispatchQueue.global().async {
             self.aaa?.run()
+        }
+        DispatchQueue.global().async {
             self.ccc?.run()
         }
     }
