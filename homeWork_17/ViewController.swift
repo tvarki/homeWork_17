@@ -120,6 +120,7 @@ class MainClass{
 
     func print123(){
         print("---------------------------")
+        /*
         DispatchQueue.global().async {
             self.b?.run()
         }
@@ -129,11 +130,25 @@ class MainClass{
         DispatchQueue.global().async {
             self.c?.run()
         }
-
+        */
+        
+        
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.print123_1()
+        }
+        DispatchQueue.global(qos: .utility).async {
+            self.print123_2()
+        }
+        DispatchQueue.global(qos: .background).async {
+            self.print123_3()
+        }
+        
     }
     
     func print231(){
         print("---------------------------")
+        /*
         DispatchQueue.global().async {
             self.bb?.run()
         }
@@ -143,10 +158,23 @@ class MainClass{
         DispatchQueue.global().async {
             self.cc?.run()
         }
+ */
+        
+        DispatchQueue.global(qos: .background).async() {
+            self.print231_1()
+        }
+        DispatchQueue.global(qos: .userInteractive).async() {
+            self.print231_2()
+        }
+        DispatchQueue.global(qos: .utility).async() {
+            self.print231_3()
+        }
+        
     }
     
     func print312(){
         print("---------------------------")
+        /*
         DispatchQueue.global().async {
             self.bbb?.run()
         }
@@ -156,6 +184,17 @@ class MainClass{
         DispatchQueue.global().async {
             self.ccc?.run()
         }
+ */
+        DispatchQueue.global(qos: .utility).async {
+            self.print312_1()
+        }
+        DispatchQueue.global(qos: .background).async() {
+            self.print312_2()
+        }
+        DispatchQueue.global(qos: .userInteractive).async() {
+            self.print312_3()
+        }
+        
     }
     
     func finishAllThread(){
@@ -182,8 +221,6 @@ class MainClass{
         state = .Printed1
         condition.signal()
         condition.unlock()
-        
-        
     }
     
     private func print123_2(){
@@ -211,6 +248,37 @@ class MainClass{
         condition.unlock()
     }
     
+//    
+//    private func universalPrint(value: Int, prevState: State, nextState: State ){
+//        
+//        print("Try to print \(value)")
+//
+//        switch prevState {
+//        case .Default:
+//            while(state == .Printed1 || state == .Printed2 || state == .Printed3) {
+//                condition.wait()
+//            }
+//        case .Printed1:
+//            while(state == .Printed2 || state == .Default || state == .Printed3) {
+//                condition.wait()
+//            }
+//        case .Printed2:
+//            while(state == .Printed1 || state == .Default || state == .Printed3) {
+//                condition.wait()
+//            }
+//        case .Printed3:
+//            while(state == .Printed1 || state == .Default || state == .Printed2) {
+//                condition.wait()
+//            }
+//        }
+//        
+//        condition.lock()
+//        print(value)
+//        state = .Default
+//        condition.signal()
+//        condition.unlock()
+//    }
+//    
     
     
     private func print231_1(){
@@ -298,7 +366,7 @@ class MainClass{
     func create231(){
         self.aa = MyThread(quality: .background, name: "1",clousure: print231_1)
         self.bb = MyThread(quality: .userInteractive, name: "2", clousure: print231_2)
-        self.cc = MyThread(quality: .utility, name: "3", clousure: print231_3)
+        self.cc = MyThread(quality: .utility, name: "3",clousure: print231_3)
     }
     
     //MARK:- create thread for 312
@@ -307,6 +375,44 @@ class MainClass{
         self.bbb = MyThread(quality: .background, name: "2", clousure: print312_2)
         self.ccc = MyThread(quality: .userInteractive, name: "3", clousure: print312_3)
     }
+    
+    func create_2_123(){
+        self.a = MyThread(quality: .userInteractive, name: "1", clousure: print123_1)
+        self.b = MyThread(quality: .utility, name: "2", clousure: print123_2)
+        self.c = MyThread(quality: .background, name: "3", clousure: print123_3)
+    }
+}
+
+
+
+
+//MARK:- MyThread class
+class MyThread2{
+    
+    private static var mutex = NSLock()
+    private let quality : QualityOfService
+    private let thread : Thread
+    
+    init(quality: QualityOfService, name: String, clousure: @escaping (Int, State, State)->(Void)){
+        self.quality = quality
+        thread = Thread() {
+            clousure(1, .Default, .Printed3)
+        }
+        thread.name = name
+        thread.qualityOfService = quality
+    }
+    
+    func run(){
+        thread.start()
+    }
+    
+    func stop(){
+        thread.cancel()
+    }
+    
+    
+    
+
     
 }
 
